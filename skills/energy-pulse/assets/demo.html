@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Energy Pulse</title>
+<link rel="stylesheet" href="energy-pulse.css">
+<style>
+  :root { --text: #eceeed; --muted: #8b908e; }
+  :root[data-theme="light"] { --text: #111312; --muted: #5c615f; }
+  * { box-sizing: border-box; }
+  body { margin: 0; color: var(--text); font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  .top { position: sticky; top: 0; z-index: 5; display: flex; gap: 10px; align-items: center; justify-content: space-between;
+         padding: 14px 24px; background: color-mix(in srgb, var(--ep-bg) 94%, transparent); border-bottom: 1px solid rgba(127,127,127,.12); }
+  .top b { font-size: 17px; letter-spacing: -.02em; }
+  .sw { display: flex; gap: 8px; align-items: center; }
+  .sw button { width: 22px; height: 22px; border-radius: 50%; border: 2px solid transparent; cursor: pointer; padding: 0; }
+  .sw button.on { border-color: var(--text); }
+  .sw .theme { width: auto; height: 28px; padding: 0 12px; border-radius: 999px; background: rgba(127,127,127,.14); color: var(--text); font: inherit; font-size: 13px; }
+  main { max-width: 1100px; margin: 0 auto; padding: 0 24px 120px; }
+  .ep-hero { padding: 64px 0 28px; }
+  h1 { font-size: clamp(38px, 6vw, 64px); line-height: 1.04; letter-spacing: -.038em; font-weight: 600; margin: 10px 0 12px; }
+  .lead { color: var(--muted); font-size: 17px; max-width: 520px; margin: 0 0 32px; }
+  .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
+  .tile { padding: 18px 20px; }
+  .tile small { color: var(--muted); } .tile div { font-size: 28px; font-weight: 600; letter-spacing: -.02em; margin-top: 4px; }
+  section { padding-top: 120px; }
+  h2 { font-size: 30px; letter-spacing: -.022em; margin: 0 0 18px; }
+  .card { padding: 22px; min-height: 160px; }
+  .card p { color: var(--muted); margin: 6px 0 0; }
+  .btn { display: inline-block; margin-top: 8px; padding: 11px 20px; border-radius: 999px; background: var(--accent); color: #041008; font-weight: 600; text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="top ep-above">
+  <b>Energy Pulse</b>
+  <div class="sw" id="sw"><button class="theme" id="theme">Light</button></div>
+</div>
+<main>
+  <div class="ep-hero">
+    <canvas id="ribbon" aria-hidden="true"></canvas>
+    <span class="ep-live" style="color:var(--muted);font-size:13px">Live</span>
+    <h1>Market pulse</h1>
+    <p class="lead">A light ribbon that breathes behind your header, with energy racing along every strand.</p>
+    <div class="tiles">
+      <div class="tile ep-glass"><small>Balance</small><div>$12,480</div></div>
+      <div class="tile ep-glass"><small>Today</small><div>+4.2%</div></div>
+      <div class="tile ep-glass"><small>Open positions</small><div>7</div></div>
+    </div>
+  </div>
+  <section data-ribbon-shape="sweepLeft">
+    <h2>Soft light behind every section</h2>
+    <div class="tiles">
+      <div class="card ep-glass"><b>Ambient layer</b><p>Dim strands that reshape as you scroll.</p></div>
+      <div class="card ep-glass"><b>One accent</b><p>Pick a colour above. Everything retints.</p></div>
+      <div class="card ep-glass"><b>Light theme</b><p>The same ribbon, drawn as ink.</p></div>
+    </div>
+  </section>
+  <section data-ribbon-shape="diagDown"><h2>Corner to corner</h2><a class="btn" href="#">Get started</a></section>
+  <section data-ribbon-shape="arch" style="min-height:70vh"><h2>Keeps going as you scroll</h2></section>
+</main>
+<script type="module">
+  import { energyPulse } from './energy-pulse.js';
+  const root = document.documentElement;
+  const colours = ['#3fbf86', '#4c9aff', '#a06bff', '#ff5c8a', '#ff8a3d', '#e8c547'];
+  const pick = new URLSearchParams(location.search).get('accent');
+  let accent = pick ? '#' + pick : colours[0];
+  root.style.setProperty('--accent', accent);
+  const ep = energyPulse({ accent, hero: '#ribbon' });
+  for (const c of colours) {
+    const b = document.createElement('button'); b.style.background = c; b.className = c === accent ? 'on' : '';
+    b.onclick = () => { accent = c; root.style.setProperty('--accent', c); document.querySelectorAll('#sw button').forEach(x => x.classList.toggle('on', x === b)); ep.set({ accent: c }); };
+    sw.prepend(b);
+  }
+  theme.onclick = () => {
+    const light = root.dataset.theme !== 'light'; root.dataset.theme = light ? 'light' : 'dark';
+    theme.textContent = light ? 'Dark' : 'Light'; ep.set({ theme: root.dataset.theme });
+  };
+</script>
+</body>
+</html>

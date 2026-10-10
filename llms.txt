@@ -1,0 +1,10 @@
+# Energy Pulse
+
+> A design skill that adds a glowing, breathing WebGL light ribbon (white-hot pulsing core, light racing along hundreds of strands, soft ambient light while scrolling) to any website. One accent colour, dark or light theme, no dependencies.
+
+- [SKILL.md: how to apply it](https://raw.githubusercontent.com/rimidalvsulrod/energy-pulsing-effect-for-websites/main/skills/energy-pulse/SKILL.md)
+- [energy-pulse.js: preset and mount](https://raw.githubusercontent.com/rimidalvsulrod/energy-pulsing-effect-for-websites/main/skills/energy-pulse/assets/energy-pulse.js)
+- [ribbon-engine.js: WebGL2 engine](https://raw.githubusercontent.com/rimidalvsulrod/energy-pulsing-effect-for-websites/main/skills/energy-pulse/assets/ribbon-engine.js)
+- [energy-pulse.css](https://raw.githubusercontent.com/rimidalvsulrod/energy-pulsing-effect-for-websites/main/skills/energy-pulse/assets/energy-pulse.css)
+- [EnergyPulse.tsx: React / Next.js](https://raw.githubusercontent.com/rimidalvsulrod/energy-pulsing-effect-for-websites/main/skills/energy-pulse/assets/EnergyPulse.tsx)
+- [Engine reference and tuning](https://raw.githubusercontent.com/rimidalvsulrod/energy-pulsing-effect-for-websites/main/skills/energy-pulse/references/engine.md)

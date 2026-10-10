@@ -1,0 +1,11 @@
+{
+  "name": "energy-pulse",
+  "owner": { "name": "rimidalvsulrod" },
+  "plugins": [
+    {
+      "name": "energy-pulse",
+      "source": "./",
+      "description": "Energy pulsing effect for websites (design skill)."
+    }
+  ]
+}

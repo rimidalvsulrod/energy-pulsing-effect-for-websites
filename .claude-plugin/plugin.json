@@ -1,0 +1,10 @@
+{
+  "name": "energy-pulse",
+  "version": "1.0.0",
+  "description": "Energy pulsing effect for websites: a WebGL light ribbon with a breathing white-hot core and light pulses racing along hundreds of strands behind the hero, plus soft ambient light behind the page. Any accent colour, dark or light theme.",
+  "author": { "name": "rimidalvsulrod" },
+  "homepage": "https://github.com/rimidalvsulrod/energy-pulsing-effect-for-websites",
+  "repository": "https://github.com/rimidalvsulrod/energy-pulsing-effect-for-websites",
+  "license": "MIT",
+  "keywords": ["design", "animation", "webgl", "background", "glow", "ribbon", "pulse"]
+}
